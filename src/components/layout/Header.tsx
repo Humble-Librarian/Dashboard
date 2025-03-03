@@ -29,23 +29,23 @@ const Header: React.FC<HeaderProps> = ({
   isMobileMenuOpen = false 
 }) => {
   return (
-    <header className="h-16 px-4 md:px-6 border-b border-border flex items-center justify-between bg-white/80 backdrop-blur-sm z-10">
+    <header className="h-16 px-4 md:px-6 border-b border-border flex items-center justify-between bg-white/80 backdrop-blur-sm z-10 sticky top-0">
       <div className="flex items-center gap-2">
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden rounded-full"
+          className="lg:hidden rounded-full"
           onClick={onMenuToggle}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
         
-        <div className="md:hidden font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <div className="lg:hidden font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           FinWise
         </div>
         
-        <div className="relative hidden md:block w-64">
+        <div className="relative hidden lg:block w-64">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
@@ -56,6 +56,15 @@ const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="flex items-center gap-2">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden rounded-full"
+          aria-label="Search"
+        >
+          <Search className="h-5 w-5" />
+        </Button>
+
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -67,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({
               <span className="absolute top-1 right-1.5 w-2 h-2 bg-primary rounded-full" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-80 p-0">
+          <PopoverContent align="end" className="w-full sm:w-80 p-0">
             <div className="p-3 border-b">
               <h3 className="font-semibold">Notifications</h3>
             </div>
@@ -86,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
                   )} />
                   <div>
                     <p className="text-sm font-medium">New daily tip available</p>
-                    <p className="text-xs text-muted-foreground">Today at 9:42 AM</p>
+                    <p className="text-xs text-muted-foreground mt-1">Today at 9:42 AM</p>
                   </div>
                 </div>
               ))}

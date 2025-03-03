@@ -19,7 +19,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background">
+    <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-background">
       <Sidebar 
         isMobileOpen={isMobileMenuOpen} 
         onMobileClose={closeMobileMenu} 

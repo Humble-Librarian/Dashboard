@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={onMobileClose}
           aria-hidden="true"
         />
@@ -85,8 +85,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         className={cn(
           "flex flex-col h-full bg-white border-r border-border px-3 py-6 select-none",
           "fixed top-0 left-0 z-50 w-64 h-screen transition-transform duration-300",
-          "md:relative md:translate-x-0 md:z-0",
-          !isMobileOpen && "-translate-x-full md:translate-x-0",
+          "lg:relative lg:translate-x-0 lg:z-0",
+          !isMobileOpen && "-translate-x-full lg:translate-x-0",
           className
         )}
       >
@@ -94,7 +94,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <h1 className="text-xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">FinWise</h1>
           <button 
             onClick={onMobileClose}
-            className="md:hidden text-muted-foreground hover:text-foreground"
+            className="lg:hidden text-muted-foreground hover:text-foreground"
             aria-label="Close sidebar"
           >
             <X size={20} />
