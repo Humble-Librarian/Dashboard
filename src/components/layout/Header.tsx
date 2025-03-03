@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Bell, Search, User } from "lucide-react";
+import { Bell, Search, User, Menu, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,16 +19,40 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onMenuToggle?: () => void;
+  isMobileMenuOpen?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ 
+  onMenuToggle, 
+  isMobileMenuOpen = false 
+}) => {
   return (
-    <header className="h-16 px-6 border-b border-border flex items-center justify-between bg-white/80 backdrop-blur-sm z-10">
-      <div className="relative w-64">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="w-full pl-9 h-9 rounded-full bg-secondary border-none focus-visible:ring-primary/20"
-        />
+    <header className="h-16 px-4 md:px-6 border-b border-border flex items-center justify-between bg-white/80 backdrop-blur-sm z-10">
+      <div className="flex items-center gap-2">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden rounded-full"
+          onClick={onMenuToggle}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
+        
+        <div className="md:hidden font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          FinWise
+        </div>
+        
+        <div className="relative hidden md:block w-64">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Search..."
+            className="w-full pl-9 h-9 rounded-full bg-secondary border-none focus-visible:ring-primary/20"
+          />
+        </div>
       </div>
 
       <div className="flex items-center gap-2">
